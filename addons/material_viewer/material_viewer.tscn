@@ -1,0 +1,193 @@
+[gd_scene load_steps=9 format=3 uid="uid://pbtso66u5xrs"]
+
+[ext_resource type="Script" path="res://addons/material_viewer/material_viewer_uv.gd" id="1_k3c8x"]
+[ext_resource type="Texture2D" uid="uid://bwfwhb6jv4run" path="res://addons/material_viewer/icons/reload.svg" id="2_l7k7x"]
+[ext_resource type="Texture2D" uid="uid://mds64et7p2ow" path="res://addons/material_viewer/icons/settings.svg" id="3_nb6qi"]
+[ext_resource type="Texture2D" uid="uid://q2m6gd7qskwh" path="res://addons/material_viewer/icons/apply.svg" id="4_o6cwb"]
+[ext_resource type="Texture2D" uid="uid://c2h42hbf45x34" path="res://addons/material_viewer/icons/godot/ShaderMaterial.svg" id="4_wdnnh"]
+[ext_resource type="Texture2D" uid="uid://carjwwg7y82bm" path="res://addons/material_viewer/icons/information.svg" id="5_i40yw"]
+[ext_resource type="Texture2D" uid="uid://dtnbjl83146g8" path="res://addons/material_viewer/icons/bug.svg" id="6_ek5lv"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_cvmq5"]
+allow_unpress = true
+
+[node name="Material Viewer" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k3c8x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Reload" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reload"
+icon = ExtResource("2_l7k7x")
+clip_text = true
+
+[node name="Settings" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Settings"
+icon = ExtResource("3_nb6qi")
+clip_text = true
+
+[node name="Apply" type="Button" parent="VBoxContainer/Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+icon = ExtResource("4_o6cwb")
+clip_text = true
+
+[node name="Settings" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title_Settings" type="HBoxContainer" parent="VBoxContainer/Settings"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Settings/Title_Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/Title_Settings"]
+layout_mode = 2
+text = "Settings"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Settings/Title_Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings"]
+layout_mode = 2
+text = "Filter"
+clip_text = true
+
+[node name="shader_material" type="CheckBox" parent="VBoxContainer/Settings"]
+layout_mode = 2
+button_pressed = true
+text = "Shader Material"
+clip_text = true
+
+[node name="standart_material_3d" type="CheckBox" parent="VBoxContainer/Settings"]
+layout_mode = 2
+button_pressed = true
+text = "Standard Material 3D"
+clip_text = true
+
+[node name="visual_shader" type="CheckBox" parent="VBoxContainer/Settings"]
+layout_mode = 2
+text = "Visual Shader"
+clip_text = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Settings"]
+visible = false
+layout_mode = 2
+
+[node name="Help" type="Button" parent="VBoxContainer/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Help"
+icon = ExtResource("5_i40yw")
+clip_text = true
+
+[node name="Bug Report" type="Button" parent="VBoxContainer/Settings/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bug Report"
+icon = ExtResource("6_ek5lv")
+clip_text = true
+
+[node name="Title_Search" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Title_Search"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Title_Search"]
+layout_mode = 2
+text = "Search"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Title_Search"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Search" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Search"
+virtual_keyboard_enabled = false
+clear_button_enabled = true
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Title_Materials" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Title_Materials"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/Title_Materials"]
+layout_mode = 2
+text = "Materials"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/Title_Materials"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Materials" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Materials"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Material" type="Button" parent="VBoxContainer/Materials/VBoxContainer2"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_cvmq5")
+text = "Click Reload"
+icon = ExtResource("4_wdnnh")
+alignment = 0
+clip_text = true
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="TextEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Path"
+editable = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="Alert" type="AcceptDialog" parent="."]
+initial_position = 4
+size = Vector2i(163, 100)
+dialog_text = "No matches found!"
