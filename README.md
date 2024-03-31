@@ -1,7 +1,7 @@
 # MaterialViewer
 Plugin for Godot
 
-![theme_01]([https://github.com/passivestar/godot-minimal-theme/assets/60579014/84f7672b-2313-47f4-b4c5-0db7020756d7](https://github.com/3Dvachevsky/Images/blob/main/MaterialViewer/MaterialViewer.jpg?raw=true))
+![MaterialViewer](https://github.com/3Dvachevsky/MaterialViewer/assets/23451556/b5a182c8-f43d-4b04-a8e4-314b42619fce)
 
 ## Usage/Examples
 ### 1. Search for all materials in the project
@@ -11,4 +11,5 @@ Plugin for Godot
 
 
 ### 3. Search and filter by materials
+
 
