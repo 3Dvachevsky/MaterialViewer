@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://pbtso66u5xrs"]
+[gd_scene load_steps=8 format=3 uid="uid://pbtso66u5xrs"]
 
 [ext_resource type="Script" path="res://addons/material_viewer/material_viewer_uv.gd" id="1_k3c8x"]
 [ext_resource type="Texture2D" uid="uid://bwfwhb6jv4run" path="res://addons/material_viewer/icons/reload.svg" id="2_l7k7x"]
@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://c2h42hbf45x34" path="res://addons/material_viewer/icons/godot/ShaderMaterial.svg" id="4_wdnnh"]
 [ext_resource type="Texture2D" uid="uid://carjwwg7y82bm" path="res://addons/material_viewer/icons/information.svg" id="5_i40yw"]
 [ext_resource type="Texture2D" uid="uid://dtnbjl83146g8" path="res://addons/material_viewer/icons/bug.svg" id="6_ek5lv"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_cvmq5"]
-allow_unpress = true
 
 [node name="Material Viewer" type="PanelContainer"]
 anchors_preset = 15
@@ -53,7 +50,6 @@ icon = ExtResource("4_o6cwb")
 clip_text = true
 
 [node name="Settings" type="VBoxContainer" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Title_Settings" type="HBoxContainer" parent="VBoxContainer/Settings"]
@@ -92,6 +88,26 @@ clip_text = true
 layout_mode = 2
 text = "Visual Shader"
 clip_text = true
+
+[node name="Label2" type="Label" parent="VBoxContainer/Settings"]
+visible = false
+layout_mode = 2
+text = "Other"
+clip_text = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Settings"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings/HBoxContainer2"]
+layout_mode = 2
+text = "Size"
+
+[node name="Size_Slider" type="HSlider" parent="VBoxContainer/Settings/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Settings"]
 visible = false
@@ -163,9 +179,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Material" type="Button" parent="VBoxContainer/Materials/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-toggle_mode = true
-button_group = SubResource("ButtonGroup_cvmq5")
+auto_translate = false
 text = "Click Reload"
 icon = ExtResource("4_wdnnh")
 alignment = 0

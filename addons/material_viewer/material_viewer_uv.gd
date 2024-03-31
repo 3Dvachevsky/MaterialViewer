@@ -16,6 +16,8 @@ extends PanelContainer
 #---Buttons---#
 @onready var help = $VBoxContainer/Settings/HBoxContainer/Help
 @onready var bug_report = $"VBoxContainer/Settings/HBoxContainer/Bug Report"
+#---Slider---#
+@onready var size_slider = $VBoxContainer/Settings/HBoxContainer2/Size_Slider
 #---Icons---#
 const SHADER_MATERIAL = preload("res://addons/material_viewer/icons/godot/ShaderMaterial.svg")
 const STANDARD_MATERIAL_3D = preload("res://addons/material_viewer/icons/godot/StandardMaterial3D.svg")
@@ -42,6 +44,7 @@ func _ready():
 	visual_shader.toggled.connect(_filter_visual_shader)
 	help.pressed.connect(_help)
 	bug_report.pressed.connect(_bug_report)
+	size_slider.value_changed.connect(_size_slider)
 
 func _reload():
 	reload.emit()
@@ -139,6 +142,11 @@ func _text_changed(text):
 				filtre_buttons[i].visible = false
 
 #---Setting-Buttons---#
+
+func _size_slider(value):
+	var y = 30 * (1 - value) + 60 * value
+	for i in Buttons.size():
+		Buttons[i].custom_minimum_size = Vector2(0, y)
 
 func _help():
 	OS.shell_open("https://github.com/3Dvachevsky/MaterialViewer")
