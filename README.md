@@ -5,6 +5,9 @@ Plugin for Godot
 
 ## Installation
 
+- Go to [Releases](https://github.com/3Dvachevsky/MaterialViewer/releases) and download the latest version.
+- Add the downloaded folder `material_viewer` to the addons
+- `Project` - `Project Settings` - `Plugin` - `Material Viewer` - `Status` - `Enable`
 
 ## Usage/Examples
 - Search for all materials in the project
