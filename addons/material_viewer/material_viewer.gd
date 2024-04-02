@@ -53,7 +53,6 @@ func apply_material(mesh):
 				for i in mi.mesh.get_surface_count():
 					subresourcesmats[surfaces[i]] = { "use_external/enabled": true, "use_external/path": find_result[i].resource_path }
 	else:
-		print("No matches found!")
 		dock.alert()
 		return
 

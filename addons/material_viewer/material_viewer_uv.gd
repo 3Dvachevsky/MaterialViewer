@@ -144,7 +144,7 @@ func _text_changed(text):
 #---Setting-Buttons---#
 
 func _size_slider(value):
-	var y = 30 * (1 - value) + 60 * value
+	var y = 25 * (1 - value) + 60 * value
 	for i in Buttons.size():
 		Buttons[i].custom_minimum_size = Vector2(0, y)
 
