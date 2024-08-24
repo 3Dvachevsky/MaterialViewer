@@ -85,7 +85,6 @@ func get_all_surfaces(scene : Node3D):
 							break
 						elif n == surfaces.size()-1:
 							surfaces.append(matName)
-	print(surfaces)
 	return surfaces
 
 func find_material(surfaces : Array[String], materials : Array):
