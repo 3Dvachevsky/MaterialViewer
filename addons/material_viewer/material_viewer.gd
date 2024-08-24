@@ -25,11 +25,10 @@ func get_all_glb():
 	var selected_folder = EditorInterface.get_current_directory()
 	var dir = DirAccess.open(selected_folder)
 	for file in dir.get_files():
-		if file.ends_with(".glb"):
-			var scene = load(selected_folder + "/" + file)
-			if scene is PackedScene:
-				objects.append(scene)
-				apply_material(scene)#Вынести вызов из цикла!
+		var scene = load(selected_folder + "/" + file)
+		if scene is PackedScene:
+			objects.append(scene)
+			apply_material(scene)#Вынести вызов из цикла!
 	return objects
 
 func apply_material(mesh):
@@ -38,20 +37,23 @@ func apply_material(mesh):
 	var surfaces = get_all_surfaces(scene)
 	var materials = get_all_materials()
 	var find_result = find_material(surfaces, materials)
-	
 	var config = ConfigFile.new()
 	config.load(mesh.resource_path + ".import")
+
 	var subresources : Dictionary = config.get_value("params", "_subresources")
 	var subresourcesmats : Dictionary
 	if subresources.has("materials"):
 		subresourcesmats = subresources["materials"].duplicate()
 	
 	if find_result != []:
-		for child in childs:
-			if child.get_class() == "MeshInstance3D":
-				var mi : MeshInstance3D = child
-				for i in mi.mesh.get_surface_count():
-					subresourcesmats[surfaces[i]] = { "use_external/enabled": true, "use_external/path": find_result[i].resource_path }
+		for i in surfaces.size():
+			subresourcesmats[surfaces[i]] = { "use_external/enabled": true, "use_external/path": find_result[i].resource_path }
+		#for child in childs:
+		#	if child.get_class() == "MeshInstance3D":
+		#		var mi : MeshInstance3D = child
+		#		for i in mi.mesh.get_surface_count():
+		#			subresourcesmats[surfaces[i]] = { "use_external/enabled": true, "use_external/path": find_result[i].resource_path }
+		#			print("asd")
 	else:
 		dock.alert()
 		return
@@ -75,7 +77,15 @@ func get_all_surfaces(scene : Node3D):
 			var mi : MeshInstance3D = child
 			for i in mi.mesh.get_surface_count():
 				var matName = mi.mesh.get("surface_" + str(i) + "/name")
-				surfaces.append(matName)
+				if surfaces == []:
+					surfaces.append(matName)
+				else:
+					for n in surfaces.size():
+						if matName == surfaces[n]:
+							break
+						elif n == surfaces.size()-1:
+							surfaces.append(matName)
+	print(surfaces)
 	return surfaces
 
 func find_material(surfaces : Array[String], materials : Array):
@@ -85,13 +95,7 @@ func find_material(surfaces : Array[String], materials : Array):
 		for n in materials.size():
 			var material = materials[n]
 			if surface == material.resource_path.get_basename().get_slice("/", material.resource_path.get_slice_count("/")-1):
-				if find_result == []:
-					find_result.append(material)
-				else:
-					for g in find_result.size():
-						var result = find_result[g]
-						if material != result or find_result == []:
-							find_result.append(material)
+				find_result.append(material)
 	return find_result
 
 func get_all_materials():
